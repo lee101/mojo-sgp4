@@ -16,5 +16,7 @@ PYTHONPATH = "python"
 [dependencies]
 mojo = "==1.2.0.dev2026092605"
 python = "3.13.*"
+max = "==26.7.0.dev2026092605"
+sgp4 = "*"
 pytest = "*"
 numpy = "*"
