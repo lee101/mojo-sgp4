@@ -8,7 +8,6 @@ import shutil
 import subprocess
 import sys
 
-import numpy as np
 
 PKG = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(PKG))
@@ -154,6 +153,7 @@ def build(force: bool = False) -> str:
     os.makedirs(os.path.dirname(out), exist_ok=True)
     cmd = mojo_command() + [
         "build", "--emit", "shared-lib", "--fp-mode", "contract=off",
+        "-j", os.environ.get("MOJOSGP4_JOBS", "8"),
         "-I", SRC, os.path.join(SRC, "capi.mojo"), "-o", out,
     ]
     proc = subprocess.run(cmd, capture_output=True, text=True, timeout=1800)

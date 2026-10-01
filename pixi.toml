@@ -12,6 +12,10 @@ bench = "flock /tmp/mojo-bench.lock python bench/bench.py"
 
 [activation.env]
 PYTHONPATH = "python"
+# numpy only carries buffers across the FFI here, never a BLAS call, and its
+# 72-thread pool aborts the process with "pthread_create failed" on hosts with
+# a tight pid limit.
+OPENBLAS_NUM_THREADS = "1"
 
 [dependencies]
 mojo = "==1.2.0.dev2026092605"

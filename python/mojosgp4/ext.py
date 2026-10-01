@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from ._lib import I, F, lib
+from ._lib import lib
 from .functions import days2mdhms  # noqa: F401  (re-exported, as upstream)
 
 _VEC = np.zeros(3, dtype=np.float64)
